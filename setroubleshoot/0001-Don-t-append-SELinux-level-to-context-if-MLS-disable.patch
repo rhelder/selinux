@@ -1,0 +1,40 @@
+From 71dea83371623717a0718c8beead688ddfa7347a Mon Sep 17 00:00:00 2001
+From: Russell Wright Helder <rwh@russellhelder.net>
+Date: Wed, 23 Sep 2026 10:13:13 -0700
+Subject: [PATCH] Don't append SELinux level to context if MLS disabled
+
+---
+ src/setroubleshoot/audit_data.py | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/src/setroubleshoot/audit_data.py b/src/setroubleshoot/audit_data.py
+index d1e03d7..85fd4b6 100644
+--- a/src/setroubleshoot/audit_data.py
++++ b/src/setroubleshoot/audit_data.py
+@@ -165,13 +165,19 @@ class AvcContext(XmlSerialize):
+                 self.user = fields[0]
+                 self.role = fields[1]
+                 self.type = fields[2]
+-                if len(fields) > 3:
+-                    self.mls = ':'.join(fields[3:])
++                if bool(selinux.is_selinux_mls_enabled()):
++                    if len(fields) > 3:
++                        self.mls = ':'.join(fields[3:])
++                    else:
++                        self.mls = 's0'
+                 else:
+-                    self.mls = 's0'
++                    self.mls = None
+ 
+     def __str__(self):
+-        return '%s:%s:%s:%s' % (self.user, self.role, self.type, self.mls)
++        if self.mls:
++            return '%s:%s:%s:%s' % (self.user, self.role, self.type, self.mls)
++        else:
++            return '%s:%s:%s' % (self.user, self.role, self.type)
+ 
+     def format(self):
+         # FIXME, what does selinux_raw_to_trans_context() do and why do we need it?
+-- 
+2.55.0
+

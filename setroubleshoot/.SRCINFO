@@ -37,8 +37,10 @@ pkgbase = setroubleshoot
 	source = https://gitlab.com/setroubleshoot/setroubleshoot/-/archive/3.3.37/setroubleshoot-3.3.37.tar.gz
 	source = setroubleshoot.tmpfiles
 	source = setroubleshoot.sysusers
+	source = 0001-Don-t-append-SELinux-level-to-context-if-MLS-disable.patch
 	sha256sums = a8fa692670c262ffbe6efded1fc85b85b95d4d3e0e2625e1d8f82a1b6abe670a
 	sha256sums = 4af9c5f65c258712d275794ca659a941011916cd846d35ed2fea17411cc929fd
 	sha256sums = f3ff0f1467bf7342c5557002b13c5992e4f9178fcda3e8d33716f28e20c73496
+	sha256sums = ea0f106e5afdcb009d431f599c07daef42afe5936ce5d0e81fcb89748a4593a5
 
 pkgname = setroubleshoot
