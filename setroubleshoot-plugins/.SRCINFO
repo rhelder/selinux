@@ -1,0 +1,19 @@
+pkgbase = setroubleshoot-plugins
+	pkgdesc = Analysis plugins for use with setroubleshoot
+	pkgver = 3.3.15
+	pkgrel = 1
+	url = https://gitlab.com/setroubleshoot/plugins
+	arch = any
+	groups = selinux
+	license = GPL-2.0-or-later
+	makedepends = perl-xml-parser
+	makedepends = intltool
+	depends = python
+	depends = selinux-python
+	depends = libselinux
+	depends = python-six
+	conflicts = setroubleshoot<3.3.37
+	source = https://gitlab.com/setroubleshoot/plugins/-/archive/setroubleshoot-plugins-3.3.15/plugins-setroubleshoot-plugins-3.3.15.tar.gz
+	sha256sums = 11c991d647dae957d865d589337749f2a85ba1401afb7cb688197ad428d05bea
+
+pkgname = setroubleshoot-plugins
