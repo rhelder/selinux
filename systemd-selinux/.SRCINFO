@@ -56,6 +56,8 @@ pkgbase = systemd-selinux
 	makedepends = python-pefile
 	makedepends = linux-headers
 	makedepends = libselinux
+	makedepends = rust
+	makedepends = rust-bindgen
 	conflicts = mkinitcpio<38-1
 	source = git+https://github.com/systemd/systemd#tag=v262.1?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
